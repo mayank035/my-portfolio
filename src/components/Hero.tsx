@@ -56,20 +56,19 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="mb-8 flex justify-center">
+                    <div className="mb-8 flex justify-center">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl shadow-cyan-400/20">
               <img 
-                src="/mayank-photo.png" 
+                src={`${import.meta.env.BASE_URL}mayank-photo.png`} 
                 alt="Mayank Srivastava" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  // target.src = 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400';
+                  const target = e.target as HTMLImageElement
+                  target.src = 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400'
                 }}
               />
             </div>
           </div>
-
           <motion.h1
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
             style={{
