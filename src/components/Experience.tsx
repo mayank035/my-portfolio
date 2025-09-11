@@ -216,7 +216,7 @@ export function Experience() {
                   <p className="text-sm text-gray-600 dark:text-gray-400">Microsoft Azure</p>
                 </div>
                 <motion.a
-                  href="https://learn.microsoft.com/api/credentials/share/en-us/MayankSrivastava4951/9EF31969CEAAA6BE?sharingId=1FC49C600AB15CD4"
+                  href="https://learn.microsoft.com/en-us/users/mayanksrivastava-4951/credentials/9ef31969ceaaa6be?ref=https%3A%2F%2Fwww.naukri.com%2F"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
