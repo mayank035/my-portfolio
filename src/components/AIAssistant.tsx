@@ -64,7 +64,7 @@ export function AIAssistant() {
     }
       if (lowerQuery.includes('Intro') || lowerQuery.includes('introduction')) {
         return `Hi, my name is Mayank Srivastava. I completed my graduation from Rajarshi School of Management and Technology in 2022. 
-      I have a total of 3 years and 5 months of experience at TalentPro, and currently, I’m working as a DevOps Engineer on the AIC project.
+      I have a total of 3 years and 7 months of experience at TalentPro, and currently, I’m working as a DevOps Engineer on the AIC project.
 
       In this project, my main focus has been on Azure Kubernetes Service, where I deployed microservices applications using Docker and Azure Container Registry, along with end-to-end CI/CD pipelines in Azure DevOps. 
 
@@ -75,7 +75,7 @@ export function AIAssistant() {
 
     
     if (lowerQuery.includes('experience') || lowerQuery.includes('work')) {
-      return "Mayank has 3 years and 5 months of DevOps experience. He currently works at Agriculture Insurance Company of India Limited (AIC) since 2024, focusing on Azure VM provisioning, Terraform automation, and AKS deployments. Previously at Wipro Technology (2022-2024), he automated Azure infrastructure and built comprehensive CI/CD pipelines."
+      return "Mayank has 3 years and 7 months of DevOps experience. He currently works at Agriculture Insurance Company of India Limited (AIC) since 2024, focusing on Azure VM provisioning, Terraform automation, and AKS deployments. Previously at Wipro Technology (2022-2024), he automated Azure infrastructure and built comprehensive CI/CD pipelines."
     }
     
     if (lowerQuery.includes('project') || lowerQuery.includes('portfolio')) {

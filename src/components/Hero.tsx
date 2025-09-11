@@ -4,7 +4,7 @@ import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
 
 export function Hero() {
   const [displayText, setDisplayText] = useState('')
-  const fullText = "DevOps Engineer with 3 years and 5 months of experience in designing, implementing, and managing CI/CD pipelines using Azure DevOps. Specialized in Infrastructure as Code (IaC) with Terraform for automating and managing scalable cloud resources across IaaS, PaaS, and SaaS offerings on Microsoft Azure."
+  const fullText = "DevOps Engineer with 3 years and 7 months of experience in designing, implementing, and managing CI/CD pipelines using Azure DevOps. Specialized in Infrastructure as Code (IaC) with Terraform for automating and managing scalable cloud resources across IaaS, PaaS, and SaaS offerings on Microsoft Azure."
 
   useEffect(() => {
     let currentIndex = 0
