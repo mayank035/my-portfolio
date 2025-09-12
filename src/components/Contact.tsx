@@ -1,70 +1,70 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Send, Phone, Mail, MapPin } from 'lucide-react'
-import toast from 'react-hot-toast'
-// import { supabase } from '../lib/supabase'  // ❌ फिलहाल backend API use करेंगे, इसलिए comment किया
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Send, Phone, Mail, MapPin } from "lucide-react";
+import toast from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [loading, setLoading] = useState(false)
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
 
+  // ✅ Fixed handleSubmit
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-      // ✅ Old Supabase code (commented for now)
-      /*
-      const { error: dbError } = await supabase
-        .from('messages')
-        .insert([formData])
-      if (dbError) throw dbError
+      await emailjs.send(
+        "service_kf03eld", // 👉 Replace with your actual EmailJS Service ID
+        "template_t8dplct", // 👉 Replace with your EmailJS Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "hRKLK44OOVpXShfTc" // 👉 Replace with your Public Key
+      );
 
-      const { error: emailError } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
-      })
-      if (emailError) {
-        console.warn('Email notification failed:', emailError)
-      }
-      */
-
-      // ✅ New API call to Express backend
-      const response = await fetch("http://localhost:3000/send-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.error || "Failed to send message")
-
-      toast.success("Message sent successfully! I'll get back to you soon.")
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error('Error sending message:', error)
-      toast.error('Failed to send message. Please try again.')
+      console.error("FAILED...", error);
+      toast.error("Failed to send message. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'mayanksrivas11@gmail.com', href: 'mailto:mayanksrivas11@gmail.com' },
-    { icon: Phone, label: 'Phone', value: '+91 9795165835', href: 'tel:+919795165835' },
-    { icon: MapPin, label: 'Location', value: 'Sector 44, Noida', href: '#' }
-  ]
+    {
+      icon: Mail,
+      label: "Email",
+      value: "mayanksrivas11@gmail.com",
+      href: "mailto:mayanksrivas11@gmail.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+91 9795165835",
+      href: "tel:+919795165835",
+    },
+    { icon: MapPin, label: "Location", value: "Sector 44, Noida", href: "#" },
+  ];
 
   return (
     <section id="contact" className="py-20 px-4 relative">
@@ -99,31 +99,38 @@ export function Contact() {
                   Let's Connect
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-8">
-                  I'm always open to discussing DevOps opportunities, cloud architecture, 
-                  or just having a conversation about technology. Feel free to reach out!
+                  I'm always open to discussing DevOps opportunities, cloud
+                  architecture, or just having a conversation about technology.
+                  Feel free to reach out!
                 </p>
-                
+
                 <div className="space-y-6">
-                  {contactInfo.map(({ icon: Icon, label, value, href }, index) => (
-                    <motion.a
-                      key={label}
-                      href={href}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      whileHover={{ x: 10 }}
-                      className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/30 transition-all duration-300"
-                    >
-                      <div className="p-3 rounded-full bg-gradient-to-r from-cyan-400/20 to-purple-500/20">
-                        <Icon className="h-5 w-5 text-cyan-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-                        <p className="text-gray-900 dark:text-white font-medium">{value}</p>
-                      </div>
-                    </motion.a>
-                  ))}
+                  {contactInfo.map(
+                    ({ icon: Icon, label, value, href }, index) => (
+                      <motion.a
+                        key={label}
+                        href={href}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                        whileHover={{ x: 10 }}
+                        className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/30 transition-all duration-300"
+                      >
+                        <div className="p-3 rounded-full bg-gradient-to-r from-cyan-400/20 to-purple-500/20">
+                          <Icon className="h-5 w-5 text-cyan-400" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {label}
+                          </p>
+                          <p className="text-gray-900 dark:text-white font-medium">
+                            {value}
+                          </p>
+                        </div>
+                      </motion.a>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -172,7 +179,7 @@ export function Contact() {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Subject
@@ -187,7 +194,7 @@ export function Contact() {
                     placeholder="What's this about?"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Message
@@ -202,7 +209,7 @@ export function Contact() {
                     placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
-                
+
                 <motion.button
                   type="submit"
                   disabled={loading}
@@ -225,5 +232,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
