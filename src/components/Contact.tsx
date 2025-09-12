@@ -20,15 +20,16 @@ export function Contact() {
 
     try {
       await emailjs.send(
-        "service_kf03eld", // 👉 Replace with your actual EmailJS Service ID
-        "template_t8dplct", // 👉 Replace with your EmailJS Template ID
+        "service_kf03eld", // 👉 Your EmailJS Service ID
+        "template_t8dplct", // 👉 Your EmailJS Template ID
         {
           from_name: formData.name,
-          from_email: formData.email,
+          from_email: formData.email,   // user ka email
           subject: formData.subject,
           message: formData.message,
+          reply_to: formData.email,     // 👈 yahi trick hai
         },
-        "hRKLK44OOVpXShfTc" // 👉 Replace with your Public Key
+        "hRKLK44OOVpXShfTc" // 👉 Your Public Key
       );
 
       toast.success("Message sent successfully!");
@@ -54,7 +55,7 @@ export function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "mayanksrivas11@gmail.com",
+      value: "mayanksrivas11@gmail.com", // 👈 yaha tera fixed email hoga
       href: "mailto:mayanksrivas11@gmail.com",
     },
     {
