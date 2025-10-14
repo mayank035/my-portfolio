@@ -35,9 +35,9 @@ export function Footer() {
             {[
               { icon: Github, href: 'https://github.com/mayanksrivas', label: 'GitHub' },
               { icon: Linkedin, href: 'https://www.linkedin.com/in/mayank-srivastava-6292721a9/', label: 'LinkedIn' },
-              { icon: Facebook, href: 'https://facebook.com/mayank.srivastava', label: 'Facebook' },
-              { icon: Instagram, href: 'https://instagram.com/mayank_srivastava', label: 'Instagram' },
-              { icon: Youtube, href: 'https://youtube.com/@mayanksrivastava', label: 'Youtube' },
+              { icon: Facebook, href: 'https://www.facebook.com/share/16VM6iQavY/', label: 'Facebook' },
+              { icon: Instagram, href: 'https://www.instagram.com/hr26_maan?igsh=amQ3bmh3NGRsZXIy', label: 'Instagram' },
+              { icon: Youtube, href: 'https://youtube.com/@hr26_maan?si=oe2qxGAn_Wogh34C', label: 'Youtube' },
               { icon: Mail, href: 'mailto:mayanksrivas11@gmail.com', label: 'Email' },
               { icon: Phone, href: 'tel:+919795165835', label: 'Phone' },
             ].map(({ icon: Icon, href, label }) => (
