@@ -51,7 +51,7 @@ export function About() {
                   DevOps Engineer
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  DevOps Engineer with 3 years and 7 months of experience in designing, implementing, and managing CI/CD pipelines using Azure DevOps. 
+                  DevOps Engineer with 4 years of experience in designing, implementing, and managing CI/CD pipelines using Azure DevOps. 
                   Specialized in Infrastructure as Code (IaC) with Terraform for automating and managing scalable cloud resources across IaaS, PaaS, and SaaS 
                   offerings on Microsoft Azure. Hands-on experience with Docker and Azure Kubernetes Service (AKS) for containerization and orchestration. 
                   Strong expertise in Git-based version control, branching strategies, and collaborative development using GitHub/Azure Repos. Proven ability to 
